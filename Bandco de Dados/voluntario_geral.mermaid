@@ -1,0 +1,74 @@
+graph TB
+    %% Atores
+    Administrator((Administrador))
+    Leader((Líder de Ministério))
+    Volunteer((Voluntário))
+    Member((Membro))
+
+    %% Subgraph para Gestão de Membros
+    subgraph "Gestão de Membros"
+        CadastrarMembro[Cadastrar Membro]
+        AtualizarMembro[Atualizar Dados]
+        ConsultarMembro[Consultar Membro]
+        InativarMembro[Inativar Membro]
+    end
+
+    %% Subgraph para Gestão de Voluntários
+    subgraph "Gestão de Voluntários"
+        CadastrarVoluntario[Cadastrar Voluntário]
+        DefinirHabilidades[Definir Habilidades]
+        DefinirDisponibilidade[Definir Disponibilidade]
+        AlocarMinisterio[Alocar em Ministério]
+    end
+
+    %% Subgraph para Gestão de Ministérios
+    subgraph "Gestão de Ministérios"
+        GerenciarMinisterio[Gerenciar Ministério]
+        CriarEscala[Criar Escala]
+        MonitorarPresenca[Monitorar Presença]
+        AvaliarDesempenho[Avaliar Desempenho]
+    end
+
+    %% Subgraph para Treinamentos
+    subgraph "Gestão de Treinamentos"
+        CriarTreinamento[Criar Treinamento]
+        AgendarTreinamento[Agendar Treinamento]
+        RegistrarPresenca[Registrar Presença]
+        EmitirCertificado[Emitir Certificado]
+    end
+
+    %% Subgraph para Eventos
+    subgraph "Gestão de Eventos"
+        CriarEvento[Criar Evento]
+        GerenciarEscala[Gerenciar Escala]
+        ConfirmarPresenca[Confirmar Presença]
+        RelatorioEvento[Gerar Relatório]
+    end
+
+    %% Relacionamentos do Administrador
+    Administrator --> CadastrarMembro
+    Administrator --> InativarMembro
+    Administrator --> CriarTreinamento
+    Administrator --> EmitirCertificado
+    Administrator --> GerenciarMinisterio
+
+    %% Relacionamentos do Líder
+    Leader --> ConsultarMembro
+    Leader --> AlocarMinisterio
+    Leader --> CriarEscala
+    Leader --> MonitorarPresenca
+    Leader --> AvaliarDesempenho
+    Leader --> AgendarTreinamento
+    Leader --> CriarEvento
+    Leader --> GerenciarEscala
+    Leader --> RelatorioEvento
+
+    %% Relacionamentos do Voluntário
+    Volunteer --> DefinirDisponibilidade
+    Volunteer --> DefinirHabilidades
+    Volunteer --> ConfirmarPresenca
+    Volunteer --> RegistrarPresenca
+
+    %% Relacionamentos do Membro
+    Member --> AtualizarMembro
+    Member --> CadastrarVoluntario

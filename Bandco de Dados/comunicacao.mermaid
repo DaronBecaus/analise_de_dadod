@@ -1,0 +1,80 @@
+flowchart TB
+    %% Atores Principais
+    Administrator((Administrador))
+    Leader((Líder de Ministério))
+    Volunteer((Voluntário))
+    Pastor((Pastor de Área))
+
+    %% Subgraph de Gestão de Membros
+    subgraph "Gestão de Membros"
+        CadastrarMembro[Cadastrar Membro]
+        AtualizarPerfil[Atualizar Perfil]
+        ConsultarMembro[Consultar Dados do Membro]
+        RegistrarFormacao[Registrar Formação Acadêmica]
+    end
+
+    %% Subgraph de Gestão de Ministérios
+    subgraph "Gestão de Ministérios"
+        CadastrarArea[Cadastrar Área Eclesiástica]
+        AlocarPastor[Alocar Pastor Responsável]
+        DefinirFuncoes[Definir Funções Ministeriais]
+        CriarEscala[Criar Escala de Serviço]
+    end
+
+    %% Subgraph de Comunicação e Multimídia
+    subgraph "Comunicação e Multimídia"
+        CadastrarHabilidades[Cadastrar Habilidades]
+        RegistrarExperiencia[Registrar Experiência Prévia]
+        DefinirMotivacao[Definir Motivação de Serviço]
+        AvaliarPotencial[Avaliar Potencial Ministerial]
+        GerenciarConteudo[Gerenciar Conteúdo Digital]
+    end
+
+    %% Subgraph de Treinamento e Desenvolvimento
+    subgraph "Treinamento e Desenvolvimento"
+        IdentificarNecessidades[Identificar Necessidades de Capacitação]
+        RegistrarTreinamentos[Registrar Treinamentos]
+        AcompanharDesenvolvimento[Acompanhar Desenvolvimento]
+        EmitirCertificados[Emitir Certificados]
+    end
+
+    %% Subgraph de Relatórios e Análises
+    subgraph "Relatórios e Análises"
+        GerarRelatorioMembros[Gerar Relatório de Membros]
+        AnalisarPerfisMinisteriais[Analisar Perfis Ministeriais]
+        MonitorarEngajamento[Monitorar Engajamento]
+        MapearPotenciais[Mapear Potenciais Líderes]
+    end
+
+    %% Relacionamentos do Administrador
+    Administrator --> CadastrarMembro
+    Administrator --> CadastrarArea
+    Administrator --> AlocarPastor
+    Administrator --> GerarRelatorioMembros
+    Administrator --> DefinirFuncoes
+
+    %% Relacionamentos do Líder de Ministério
+    Leader --> ConsultarMembro
+    Leader --> CriarEscala
+    Leader --> RegistrarTreinamentos
+    Leader --> AcompanharDesenvolvimento
+    Leader --> GerenciarConteudo
+    Leader --> MonitorarEngajamento
+
+    %% Relacionamentos do Pastor
+    Pastor --> AvaliarPotencial
+    Pastor --> IdentificarNecessidades
+    Pastor --> MapearPotenciais
+    Pastor --> AnalisarPerfisMinisteriais
+
+    %% Relacionamentos do Voluntário
+    Volunteer --> AtualizarPerfil
+    Volunteer --> CadastrarHabilidades
+    Volunteer --> RegistrarExperiencia
+    Volunteer --> DefinirMotivacao
+    Volunteer --> EmitirCertificados
+
+    %% Interações Cruzadas
+    Administrator <--> Leader
+    Leader <--> Pastor
+    Pastor <--> Volunteer
